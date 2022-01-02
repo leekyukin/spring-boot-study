@@ -25,9 +25,9 @@ public class TodoService {
         return this.todoRepository.save(todoEntity);
     }
 
-    public List<TodoEntity> searchById(Long id) {
+    public TodoEntity searchById(Long id) {
         return this.todoRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND);
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
 
@@ -35,10 +35,25 @@ public class TodoService {
         return this.todoRepository.findAll();
     }
 
-    public TodoEntity updateById(Long id) {
-        return null;
+    public TodoEntity updateById(Long id, TodoRequest request) {
+        TodoEntity todoEntity = this.searchById(id);
+        if (request.getTitile() != null) {
+            todoEntity.setTitile(request.getTitile());
+        }
+        if (request.getOrder() != null) {
+            todoEntity.setOrder(request.getOrder());
+        }
+        if (request.getCompleted() != null) {
+            todoEntity.setCompleted(request.getCompleted());
+        }
+        return this.todoRepository.save(todoEntity);
     }
     public void deleteById(Long id) {
+        this.todoRepository.deleteById(id);
+    }
+
+    public void deleteAll() {
+        this.todoRepository.deleteAll();
     }
 
 
