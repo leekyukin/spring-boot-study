@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class TodoRequest {
 
-    private String titile;
+    private String title;
     private Long order;
     private Boolean completed;
 

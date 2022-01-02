@@ -17,7 +17,7 @@ public class TodoResponse {
 
     public TodoResponse(TodoEntity todoEntity) {
         this.id = todoEntity.getId();
-        this.title = todoEntity.getTitile();
+        this.title = todoEntity.getTitle();
         this.order = todoEntity.getOrder();
         this.completed = todoEntity.getCompleted();
 
