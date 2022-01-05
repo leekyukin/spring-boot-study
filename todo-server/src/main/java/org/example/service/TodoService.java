@@ -28,6 +28,7 @@ public class TodoService {
     public TodoEntity searchById(Long id) {
         return this.todoRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    // orElseThrow : 값이 없다면 에러가 나게 코드를 짜는것 흔한 패턴. But, if문 쓰면 마이 복잡타~
     }
 
 
