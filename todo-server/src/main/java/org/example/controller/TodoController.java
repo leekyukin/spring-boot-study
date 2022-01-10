@@ -25,6 +25,7 @@ public class TodoController {
     public ResponseEntity<TodoResponse> create(@RequestBody TodoRequest request) {
         System.out.println("CREATE");
 
+        // ObjectUtils.isEmpty : 값의 유무 판단 (= if (data != null))
         if (ObjectUtils.isEmpty(request.getTitle()))
             return ResponseEntity.badRequest().build();
         if (ObjectUtils.isEmpty(request.getOrder()))
@@ -35,9 +36,10 @@ public class TodoController {
         return ResponseEntity.ok(new TodoResponse(result));
     }
 
-    @GetMapping("{id")
+    @GetMapping("{id}")
     public ResponseEntity<TodoResponse> readOne(@PathVariable Long id) {
         System.out.println("READ ONE");
+
         TodoEntity result = this.service.searchById((id));
         return ResponseEntity.ok(new TodoResponse(result));
     }
@@ -45,6 +47,7 @@ public class TodoController {
     @GetMapping
     public ResponseEntity<List<TodoResponse>> readAll() {
         System.out.println("READ ALL");
+
         List<TodoEntity> list = this.service.searchAll();
         List<TodoResponse> responses = list.stream().map(TodoResponse::new)
                 .collect(Collectors.toList());;
@@ -52,21 +55,25 @@ public class TodoController {
     }
 
     @PatchMapping
-    public ResponseEntity<TodoResponse> update() {
+    public ResponseEntity<TodoResponse> update(@PathVariable Long id, @RequestBody  TodoRequest request) {
         System.out.println("UPDATE");
-        return null;
+
+        TodoEntity result = this.service.updateById(id, request);
+        return ResponseEntity.ok(new TodoResponse(result));
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<?> deleteOne() {
+    public ResponseEntity<?> deleteOne(@PathVariable Long id) {
         System.out.println("DELETE");
-        return null;
+        this.service.deleteById(id);
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping
     public ResponseEntity<?> deleteAll() {
         System.out.println("DELETE ALL");
-        return null;
+        this.service.deleteAll();
+        return ResponseEntity.ok().build();
     }
 
 
