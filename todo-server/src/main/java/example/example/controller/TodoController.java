@@ -1,11 +1,11 @@
-package org.example.controller;
+package example.example.controller;
 
 
+import example.example.model.TodoEntity;
+import example.example.model.TodoRequest;
+import example.example.model.TodoResponse;
+import example.example.service.TodoService;
 import lombok.AllArgsConstructor;
-import org.example.model.TodoEntity;
-import org.example.model.TodoRequest;
-import org.example.model.TodoResponse;
-import org.example.service.TodoService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
@@ -50,7 +50,7 @@ public class TodoController {
 
         List<TodoEntity> list = this.service.searchAll();
         List<TodoResponse> responses = list.stream().map(TodoResponse::new)
-                .collect(Collectors.toList());;
+                .collect(Collectors.toList());
         return ResponseEntity.ok(responses);
     }
 
