@@ -1,5 +1,5 @@
 # Annotation organizing 
-<sup>(하나씩 채워나갈 예정)</sup>
+<sup>(하나씩 채워나갈 예정)</sup> :trollface:
 --------------------------------
 
 ## ComponentScan
