@@ -22,3 +22,58 @@
 <br>
 
 ## Bean이란?
+
+<br>
+
+### 자바에서의 javaBean
+
+
+- 데이터를 저장하기 위한 구조체로 자바 빈 규약이라는 것을 따르는 구조체
+- private 프로퍼티와 getter/setter로만 데이터를 접근한다.
+
+---
+<br>
+
+### 스프링에서의 Bean
+
+- 스프링 IoC 컨테이너에 의해 생성되고 관리되는 객체
+- 자바에서처럼 new Object();로 생성하지 않는다.
+- 각각의 Bean들 끼리는 서로 편리하게 의존(사용)할 수 있음.
+- Bean을 IoC컨테이너에서 추가 설정후 컨테이너 내에 생성된다.
+
+---
+<br>
+
+
+### 스프링 컨테이너 개요
+
+    ApplicationContext 인터페이스를 통해 제공되는 스프링 컨테이너는 Bean 객체의 생성 및 Bean들의 조립(상호 의존성 관리)을 담당한다.
+
+- **Bean 등록**
+    - 과거에는 xml로 설정을 따로 관리하여 등록(불편) <br>
+    - 현재는 annotation 기반으로 Bean 등록
+        - @Bean, @Controller, @Service
+        <br> <br>
+
+    - Bean 등록 시 정보
+        - Class 경로
+
+        - Bean의 이름
+            - 기본적으로 원래 Class 이름의 첫 문자만 소문자로 변경 <br> 
+            <sup>ex)</sup> accountService, userDao 
+
+        - Scope : Bean을 생성하는 규칙
+            - singleton: 컨테이너에 단일로 생성
+            - prototype: 작업 마다 Bean을 새로 생성하고 싶을 때
+            - request: http 요청마다 새롭게 Bean을 생성하고 싶을 때
+
+<br>
+
+- **Bean LifeCycle callback**
+    - callback: 어떤 이벤트가 발생하는 경우 호출되는 메서드
+    - lifecycle callback
+        - Bean을 생성하고 초기화하고 파괴하는 등 특정 시점에 호출되도록 정의된 함수
+    - 주로 많이 사용되는 콜백
+        - @PostConstruct: 빈 생성 시점에 필요한 작업을 수행
+        - @PreDestory: 빈 파괴(주로 어플리케이션 종료) 시점에 필요한 작업을 수행
+
