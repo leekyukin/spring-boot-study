@@ -53,3 +53,17 @@
     필요한 정보(로그)를 기록하는 것
 
 ### @UtilityClass : 유틸리티 클래스에 적용하는 annotation
+
+---
+
+## Spring jpa
+
+### @EnableJpaAuditing 
+
+    엔트리 포인트인 Application class에 주입해준다.
+    spring date jpa 기능중에 자동으로 값을 설정해주는 기능인 Auditing을 사용 가능하게 하는 annotation.
+    주입시 아래의 어노테이션 사용 가능.
+
+- ### @CreatedDate : 생성 시점
+
+- ### @LastModifiedDate : 마지막 수정 시점
