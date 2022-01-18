@@ -1,4 +1,4 @@
-# Dependency injection (의존성 주입)
+# Dependency injection (의존성 주입) 💉
 
 ## @RequiredArgsConstructor와 final을 이용한 의존성 주입 (ex] controller에 service)
 
