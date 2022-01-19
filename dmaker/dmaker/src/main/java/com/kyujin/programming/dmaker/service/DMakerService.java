@@ -2,6 +2,8 @@ package com.kyujin.programming.dmaker.service;
 
 import com.kyujin.programming.dmaker.dto.CreateDeveloper;
 import com.kyujin.programming.dmaker.entity.Developer;
+import com.kyujin.programming.dmaker.exception.DMakerErrorCode;
+import com.kyujin.programming.dmaker.exception.DMakerException;
 import com.kyujin.programming.dmaker.repository.DeveloperRepository;
 import com.kyujin.programming.dmaker.type.DeveloperLevel;
 import com.kyujin.programming.dmaker.type.DeveloperSkillType;
@@ -34,6 +36,8 @@ public class DMakerService {
 
     @Transactional
     public void createDeveloper(CreateDeveloper.Request request) {
+        validateCreateDeveloperRequest(request);
+
         Developer developer =  Developer.builder()
                 .developerLevel(DeveloperLevel.JUNIOR)
                 .developerSkillType(DeveloperSkillType.BACK_END)
@@ -45,6 +49,13 @@ public class DMakerService {
         developerRepository.save(developer);
     }
 
+    private void validateCreateDeveloperRequest(CreateDeveloper.Request request) {
+        // business validation
+        if (request.getDeveloperLevel() == DeveloperLevel.SENIOR
+                && request.getExperienceYears() < 10) {
+            throw new DMakerException(DMakerErrorCode.LEVEL_EXPERIENCE_YEARS_NOT_MATCHED);
+        }
 
 
+    }
 }
