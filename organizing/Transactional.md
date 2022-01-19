@@ -1,4 +1,4 @@
-# @Transactional
+# <span style="color:yellow">@Transactional</span>
 
     method나 class 앞뒤에 transaction 시작, 커밋 혹은 rollback을 넣어준다.  
     AOP기반의 ACID 특성을 입힐 수 있다.

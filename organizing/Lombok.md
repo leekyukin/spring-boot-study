@@ -1,4 +1,4 @@
-# Lombok
+# <span style="color:yellow">Lombok</span>
 
 ### <span style="color:yellow">@Getter</span> : getter 생성
 
