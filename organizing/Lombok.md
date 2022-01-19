@@ -23,7 +23,7 @@
 
 ### <span style="color:yellow">@Builder</span> : 빌더패턴 사용 가능
 
-    빌더패턴 <sup>Builder pattern</sup> 이란?  
+    빌더패턴(Builder pattern)이란?  
     복합 객체의 생성 과정과 표현 방법을 분리하여 동일한 생성 절차에서  
      서로 다른 표현 결과를 만들 수 있게 하는 패턴.  
     생성자에 인자가 많을 때 빌더 패턴을 사용함으로써 setter보다 간편하게 사용 가능.
