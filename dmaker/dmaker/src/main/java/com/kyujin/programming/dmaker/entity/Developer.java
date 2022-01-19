@@ -4,7 +4,6 @@ import com.kyujin.programming.dmaker.type.DeveloperLevel;
 import com.kyujin.programming.dmaker.type.DeveloperSkillType;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 

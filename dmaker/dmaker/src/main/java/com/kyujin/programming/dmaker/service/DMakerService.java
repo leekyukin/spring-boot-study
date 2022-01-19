@@ -1,5 +1,6 @@
 package com.kyujin.programming.dmaker.service;
 
+import com.kyujin.programming.dmaker.dto.CreateDeveloper;
 import com.kyujin.programming.dmaker.entity.Developer;
 import com.kyujin.programming.dmaker.repository.DeveloperRepository;
 import com.kyujin.programming.dmaker.type.DeveloperLevel;
@@ -32,7 +33,7 @@ public class DMakerService {
 // }
 
     @Transactional
-    public void createDeveloper() {
+    public void createDeveloper(CreateDeveloper.Request request) {
         Developer developer =  Developer.builder()
                 .developerLevel(DeveloperLevel.JUNIOR)
                 .developerSkillType(DeveloperSkillType.BACK_END)
