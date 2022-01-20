@@ -23,14 +23,14 @@
 
 ### <span style="color:yellow">@Builder</span> : 빌더패턴 사용 가능
 
-    빌더패턴 <sup>Builder pattern</sup>이란?  
+    빌더패턴(Builder pattern)이란?  
     복합 객체의 생성 과정과 표현 방법을 분리하여 동일한 생성 절차에서  
      서로 다른 표현 결과를 만들 수 있게 하는 패턴.  
     생성자에 인자가 많을 때 빌더 패턴을 사용함으로써 setter보다 간편하게 사용 가능.
 
 ### <span style="color:yellow">@Slf4j</span> : 간편한 로깅 사용을 돕는다
 
-    로깅<sup>logging</sup> 이란?
+    로깅(logging) 이란?
     프로그램 개발 중이나 완료 후 발생할 수 있는 오류에 대해   
     디버깅하거나 운영 중인 프로그램 상태를 모니터링 하기 위해  
     필요한 정보(로그)를 기록하는 것
