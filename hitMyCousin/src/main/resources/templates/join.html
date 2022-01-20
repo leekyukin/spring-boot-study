@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="styleSheet" th:href="@{/css/login.css}">
+</head>
+<body>
+    
+    <form method="post" action="/login">
+        <p><input name="name" type="text" placeholder="Name" autofocus required></p>
+        <p><input name="id" type="text" placeholder="ID" required></p>
+        <p><input name="pw" type="password" placeholder="Password" required></p>
+        <p><button type="submit">JOIN</button></p>
+    </form>
+    
+    
+</body>
+</html>

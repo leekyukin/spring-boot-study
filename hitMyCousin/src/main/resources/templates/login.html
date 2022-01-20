@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="styleSheet" th:href="@{/css/login.css}">
+</head>
+<body>
+    
+    <form method="post" action="/">
+        <p><input name="id" type="text" placeholder="ID" autofocus required></p>
+        <p><input name="pw" type="password" placeholder="password" required></p>
+        <p><button type="submit">LOGIN</button></p>
+        <a href="/join">아직 계정이 없으신가요?</a>
+    </form>
+    
+</body>
+</html>

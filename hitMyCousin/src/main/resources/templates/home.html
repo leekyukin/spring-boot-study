@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HitMyCousin</title>
+    <link rel="stylesheet" th:href="@{css/home.css}">
+</head>
+<body>
+    <div id="monster">
+        <a href="#"><p><img width="500px" height="500px" src="img\Cousin.jpg" ></p></a>
+        <p><h2 style="color: red;">Hit the monster!!!</h2></p>
+        <p>
+            <audio autoplay controls>
+                <source th:src="@{audio/Dawn_of_Victory.mp3}" type="audio/mp3">
+            </audio>
+        </p>
+        <img class="hidden" id="boomm" width="300px" height="200px" th:src="@{/img/boomm.png}">
+        <img class="hidden" id="atomic" width="1000px" height="700px"  th:src="@{/img/atomic.png}">
+    </div>
+    
+<script type="text/javascript" th:src="@{/js/home.js}"></script>
+</body>
+</html>
