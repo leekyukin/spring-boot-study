@@ -1,32 +1,27 @@
 package com.kyukin.hitmycousin.contorller;
 
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import com.kyukin.hitmycousin.dto.LoginUser;
+import com.kyukin.hitmycousin.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 
-@Controller
+@RestController
+@RequiredArgsConstructor
 public class HomeController {
 
-
-    @PostMapping("/")
-    public String h() {
-        return "home";
-    }
-
-    @GetMapping("/login")
-    public String login1() {
-        return "login";
-    }
+    private final UserService userService;
 
     @PostMapping("/login")
-    public void login2() {}
-
-    @GetMapping("/join")
-    public String join() {
-        return "join";
+    public void joinToLogin(LoginUser.Request request) {
+        userService.join(request);
     }
+
+
+
 
 
 
