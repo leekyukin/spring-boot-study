@@ -55,15 +55,14 @@ public class DMakerService {
     private void validateCreateDeveloperRequest(CreateDeveloper.Request request) {
         // business validation
         DeveloperLevel developerLevel = request.getDeveloperLevel();
-        Integer experienceYears1 = request.getExperienceYears();
-        Integer experienceYears = experienceYears1;
+        Integer experienceYears = request.getExperienceYears();
         DMakerErrorCode levelExperienceYearsNotMatched = DMakerErrorCode.LEVEL_EXPERIENCE_YEARS_NOT_MATCHED;
         if (developerLevel == DeveloperLevel.SENIOR
                 && experienceYears < 10) {
             throw new DMakerException(levelExperienceYearsNotMatched);
         }
         if (developerLevel == DeveloperLevel.JUNGNIOR
-                && (experienceYears1 < 4 || experienceYears1 > 10)) {
+                && (experienceYears < 4 || experienceYears > 10)) {
             throw new DMakerException(levelExperienceYearsNotMatched);
         }
         if (developerLevel == DeveloperLevel.JUNIOR && experienceYears > 4) {

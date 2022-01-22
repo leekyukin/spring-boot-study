@@ -19,7 +19,7 @@ public class UserService {
     @Transactional
     public void join(LoginUser.Request request) {
 
-        validateLoginUserRquest(request);
+        validateLoginUserRequest(request);
 
         User user = User.builder()
                 .name(request.getName())
@@ -30,9 +30,10 @@ public class UserService {
         userRepository.save(user);
     }
 
-    private void validateLoginUserRquest(LoginUser.Request request) {
-        if (request.getId().equals(userRepository.findByUid(request.getId()))) {
-             throw new UserException(UserErrorCode.DUPLICATE_ID);
-        }
+    private void validateLoginUserRequest(LoginUser.Request request) {
+        userRepository.findByUserId(request.getId())
+                .ifPresent((developer -> {
+                    throw new UserException(UserErrorCode.DUPLICATE_ID);
+                }));
     }
 }
