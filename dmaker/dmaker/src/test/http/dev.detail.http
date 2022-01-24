@@ -1,0 +1,3 @@
+### GET reqeust with a header
+GET http://localhost:8080/developer/jesusisking
+Accept: application/json
