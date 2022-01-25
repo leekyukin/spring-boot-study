@@ -4,7 +4,6 @@ import com.kyujin.programming.dmaker.dto.CreateDeveloper;
 import com.kyujin.programming.dmaker.dto.DeveloperDetailDto;
 import com.kyujin.programming.dmaker.dto.DeveloperDto;
 import com.kyujin.programming.dmaker.dto.EditDeveloper;
-import com.kyujin.programming.dmaker.entity.Developer;
 import com.kyujin.programming.dmaker.repository.DeveloperRepository;
 import com.kyujin.programming.dmaker.service.DMakerService;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Arrays;
 import java.util.List;
 
 @Slf4j
@@ -31,7 +29,7 @@ public class DMakerController {
 
         log.info("GET /create-developers HTTP/1.1");
 
-        return dMakerService.getAllDevelopers();
+        return dMakerService.getAllEmployedDevelopers();
     }
 
     @GetMapping("/developer/{memberId}")
@@ -62,6 +60,13 @@ public class DMakerController {
         log.info("request : {}", request);
 
         return dMakerService.createDeveloper(request);
+    }
+
+    @DeleteMapping("/devloper/{memberId}")
+    public DeveloperDetailDto deleteDeveloper(
+            @PathVariable String memberId
+    ) {
+        return dMakerService.deleteDeveloper(memberId);
     }
 
 }

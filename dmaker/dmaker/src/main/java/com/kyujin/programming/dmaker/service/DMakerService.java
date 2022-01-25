@@ -1,13 +1,16 @@
 package com.kyujin.programming.dmaker.service;
 
+import com.kyujin.programming.dmaker.code.StatusCode;
 import com.kyujin.programming.dmaker.dto.CreateDeveloper;
 import com.kyujin.programming.dmaker.dto.DeveloperDetailDto;
 import com.kyujin.programming.dmaker.dto.DeveloperDto;
 import com.kyujin.programming.dmaker.dto.EditDeveloper;
 import com.kyujin.programming.dmaker.entity.Developer;
+import com.kyujin.programming.dmaker.entity.RetiredDeveloper;
 import com.kyujin.programming.dmaker.exception.DMakerErrorCode;
 import com.kyujin.programming.dmaker.exception.DMakerException;
 import com.kyujin.programming.dmaker.repository.DeveloperRepository;
+import com.kyujin.programming.dmaker.repository.RetiredDeveloperRepository;
 import com.kyujin.programming.dmaker.type.DeveloperLevel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -33,7 +36,7 @@ public class DMakerService {
     // @RequiredArgsConstructor 사용시 자동으로 생성자가 만들어진다.
 
     private final DeveloperRepository developerRepository;
-
+    private final RetiredDeveloperRepository retiredDeveloperRepository;
 // @RequiredArgsConstructor 를 선언 후 Delombok 을 해보면 아래와 같은 생성자가 생성되어 있다.
 // 예전에는 테스트에 용이한 코드를 짜기 위해서 아래와 같은 생성자를 사용하였으나 많은 클레스를 관리해야
 // 할 때 비효율적이다.
@@ -50,6 +53,7 @@ public class DMakerService {
                 .developerSkillType(request.getDeveloperSkillType())
                 .experienceYears(request.getExperienceYears())
                 .memberId(request.getMemberId())
+                .statusCode(StatusCode.EMPLOYED)
                 .name(request.getName())
                 .age(request.getAge())
                 .build();
@@ -70,8 +74,9 @@ public class DMakerService {
     }
 
 
-    public List getAllDevelopers() {
-        return developerRepository.findAll()
+    public List<DeveloperDto> getAllEmployedDevelopers() {
+        return developerRepository
+                .findDeveloperByStatusCodeEquals(StatusCode.EMPLOYED)
                 .stream().map(DeveloperDto::fromEntity)
                 .collect(Collectors.toList());
     }
@@ -105,8 +110,6 @@ public class DMakerService {
                 request.getDeveloperLevel(),
                 request.getExperienceYears()
         );
-
-
     }
 
 
@@ -122,5 +125,21 @@ public class DMakerService {
         if (developerLevel == DeveloperLevel.JUNIOR && experienceYears > 4) {
             throw new DMakerException(LEVEL_EXPERIENCE_YEARS_NOT_MATCHED);
         }
+    }
+
+    @Transactional
+    public DeveloperDetailDto deleteDeveloper(String memberId) {
+        // 1. EMPLOYED -> RETIRED
+        Developer developer = developerRepository.findByMemberId(memberId)
+                .orElseThrow(() -> new DMakerException(NO_DEVELOPER));
+        developer.setStatusCode(StatusCode.RETIRED);
+
+        // 2. save into RetiredDeveloper
+        RetiredDeveloper retiredDeveloper = RetiredDeveloper.builder()
+                .memberId(memberId)
+                .name(developer.getName())
+                .build();
+        retiredDeveloperRepository.save(retiredDeveloper);
+        return DeveloperDetailDto.fromEntity(developer);
     }
 }

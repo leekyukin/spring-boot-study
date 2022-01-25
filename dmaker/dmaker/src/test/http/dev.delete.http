@@ -1,0 +1,2 @@
+DELETE http://localhost:8080/devloper/jesusisking
+Content-Type: application/json

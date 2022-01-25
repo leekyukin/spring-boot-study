@@ -1,5 +1,6 @@
 package com.kyujin.programming.dmaker.dto;
 
+import com.kyujin.programming.dmaker.code.StatusCode;
 import com.kyujin.programming.dmaker.entity.Developer;
 import com.kyujin.programming.dmaker.type.DeveloperLevel;
 import com.kyujin.programming.dmaker.type.DeveloperSkillType;
@@ -20,6 +21,7 @@ public class DeveloperDetailDto {
     private String memberId;
     private String name;
     private Integer age;
+    private StatusCode statusCode;
 
     public static DeveloperDetailDto fromEntity(Developer developer) {
         return DeveloperDetailDto.builder()
@@ -27,9 +29,9 @@ public class DeveloperDetailDto {
                 .developerSkillType(developer.getDeveloperSkillType())
                 .experienceYears(developer.getExperienceYears())
                 .memberId(developer.getMemberId())
+                .statusCode(developer.getStatusCode())
                 .name(developer.getName())
                 .age(developer.getAge())
                 .build();
     }
-
 }
