@@ -19,6 +19,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Entity
 @EntityListeners(AuditingEntityListener.class)
 public class User {
     @Id
@@ -30,6 +31,7 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private UserSkillType userSkillType;
+
 
     private Integer grade;
     private String nickName;

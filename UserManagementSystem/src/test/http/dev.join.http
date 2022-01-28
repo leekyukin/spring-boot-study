@@ -1,0 +1,16 @@
+### Send POST request with json body
+POST localhost:8080/join
+Content-Type: application/json
+
+{
+  "userDepartment": "SOFTWARE_DEVELOPMENT",
+  "userSkillType": "FULL_STACK",
+  "grade": 2,
+  "nickName": "14th disciple",
+  "email": "leekujin12@gmail.com",
+  "pw": "password",
+  "name": "이규진",
+  "age": 18,
+  "statusCode": "EXISTING",
+  "introduction": "안녕하세요 이규진입니다 ㅎㅎ"
+}

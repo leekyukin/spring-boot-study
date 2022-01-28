@@ -1,0 +1,7 @@
+### GET request with a header
+GET localhost:8080/show/EXISTING
+Accept: application/json
+
+### GET request with a header
+GET localhost:8080/show/REMOVED
+Accept: application/json

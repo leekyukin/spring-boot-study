@@ -27,7 +27,7 @@ public class JoinUser {
         private Integer grade;
 
         @NotNull
-        @Size(min = 3, max = 8, message = "NickName size must 3 ~ 8")
+        @Size(min = 3, max = 16, message = "NickName size must 3 ~ 16")
         private String nickName;
 
         @NotNull
