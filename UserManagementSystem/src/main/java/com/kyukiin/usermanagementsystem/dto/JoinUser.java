@@ -31,7 +31,7 @@ public class JoinUser {
         private String nickName;
 
         @NotNull
-        @Size(min = 16, max = 20, message = "Uid size must 16 ~ 20")
+        @Size(min = 13, max = 20, message = "Uid size must 16 ~ 20")
         private String email;
 
         @NotNull

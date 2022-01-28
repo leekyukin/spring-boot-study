@@ -1,6 +1,7 @@
 package com.kyukiin.usermanagementsystem.controller;
 
 import com.kyukiin.usermanagementsystem.dto.JoinUser;
+import com.kyukiin.usermanagementsystem.dto.LoginDto;
 import com.kyukiin.usermanagementsystem.entity.User;
 import com.kyukiin.usermanagementsystem.enums.StatusCode;
 import com.kyukiin.usermanagementsystem.service.UserService;
@@ -39,6 +40,15 @@ public class UserController {
             @PathVariable StatusCode status
             ) {
         return userService.getStatusUser(status);
+    }
+
+    @PostMapping("/login")
+    public LoginDto.Response login(
+            @Valid @RequestBody LoginDto.Request request
+    ) {
+        log.info("=======login========" + request);
+
+        return userService.login(request);
     }
 
 }

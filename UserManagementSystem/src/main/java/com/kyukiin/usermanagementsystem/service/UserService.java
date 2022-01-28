@@ -1,7 +1,9 @@
 package com.kyukiin.usermanagementsystem.service;
 
 import com.kyukiin.usermanagementsystem.dto.JoinUser;
+import com.kyukiin.usermanagementsystem.dto.LoginDto;
 import com.kyukiin.usermanagementsystem.entity.User;
+import com.kyukiin.usermanagementsystem.enums.LoginCode;
 import com.kyukiin.usermanagementsystem.enums.StatusCode;
 import com.kyukiin.usermanagementsystem.enums.UserDepartment;
 import com.kyukiin.usermanagementsystem.exception.UserErrorCode;
@@ -69,5 +71,29 @@ public class UserService {
     @Transactional
     public List<User> getStatusUser(StatusCode status) {
         return userRepository.findByStatusCode(status);
+    }
+
+    public LoginDto.Response login(LoginDto.Request request) {
+        LoginCode status;
+        if(userRepository.findByEmail(request.getEmail()) == null) {
+            status = LoginCode.NO_EMAIL;
+            return LoginDto.Response.fromEntity(null, status);
+        }
+        else if (
+                request.getEmail()
+                                .equals(userRepository
+                                .findByEmail(request.getEmail()))
+                        && request.getPw()
+                                .equals(userRepository
+                                        .findByPw(request.getPw()))
+        ) {
+            status = LoginCode.SUCCESS;
+            User user = userRepository.findByEmail(request.getEmail());
+            return LoginDto.Response.fromEntity(user, status);
+        }
+        else {
+            status = LoginCode.FAIL;
+            return LoginDto.Response.fromEntity(null, status);
+        }
     }
 }
