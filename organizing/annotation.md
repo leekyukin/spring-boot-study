@@ -20,3 +20,14 @@
 - *@Restcontoller*
     
      @controller + @ReqsponesBody
+
+- *@RequestParam*
+
+    **url :  /create-developer<span style="color:purple">?name=kyukin2&age=17</span>**
+    <br>
+    <br>
+    Http GET 방식으로 위와 같은 <span style="color:purple">quary parameter</span> 형식으로 변수에 데이터를 저장한다. 
+
+    * 사실 @RequestParam은 생략이 가능하다.  
+    * 기본적값으로 (required=false)로 필수값이 아니게 된다. 
+    * 파라미터 변수 앞에 어노테이션을 붙이면 (required=true)로 그 변수는 필수값이 된다. 
