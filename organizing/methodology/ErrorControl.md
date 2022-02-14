@@ -101,10 +101,11 @@ ErrorController라는 클레스를 error 메소드가 속해있는 클레스에 
 
 ```java
 @Override
-    protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers, HttpStatus status, WebRequest request) {
+    protected ResponseEntity<Object> handleExceptionInternal(
+    Exception ex, Object body, HttpHeaders headers, HttpStatus status, WebRequest request
+    ) {
 
-        [원하는 기능 추가!
-        ]
+        [원하는 기능 추가!]
 
         return super.handleExceptionInternal(
                 ex,
