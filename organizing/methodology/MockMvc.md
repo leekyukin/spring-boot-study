@@ -48,5 +48,41 @@
     }
     ```
 
-## 사용하기 :tools:
+## 사용하기 :computer:
 
+
+    ```java
+    @AutoConfigureMockMvc
+    @SpringBootTest // Test임을 명시하는 어노테이션
+    class BaseControllerTest {
+
+        @DisplayName("[view] [GET] 기본 페이지 요청")
+        @Test                                                       
+        void givenNothing_whenRequestingRootPage_thenReturnsIndexPage(@Autowired MockMvc mvc) throws Exception {
+            // Given
+
+            // When & Then
+            mvc.perform(get("/")) 
+                    .andExpect(status().isOk()) // status 정상
+                    .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
+                    // 그냥 contentType() 을 사용할 경우 사실은 content의 contentType은
+                    // chatset=UTF-8이 더 추가 되어 있기 때문에 같지 않다고 뜬다.
+                    .andExpect(content().string(containsString("This is default page.")))
+                    .andExpect(view().name("index"))
+                    .andDo(print());
+                   
+                }
+        }   
+    ```
+
+- .perform([http method(ex: GET,POST, ...)!]("[URL!]")) http method의 URL에서 test 할낍니다~
+- andExpect([검증할것들!]) : 검증을 수행하게 해준다. 모든 Expect가 통과해야만 테스트를 통과한다.
+- andDo([행동!]) : 검증 후 할 행동
+
+    - **status().isOk**  : Http status가 정상인가
+    - **content().contentType([content의 타입!])** : content의 타입과 [content의 타입!]이 같은가 
+    - **content().contentTypeCompatibleWith([content의 타입!])**  : content의 타입에 [content의 타입!]이 포함되어 있는가                 
+    - **content().string()** : content 에서 body 를 뜻함
+    - **containsString("[값!]")** : 감싸는 메소드에 값이 포함 되어있는지 확인
+    - **view.name("[값!]")** : view 의 이름이 index 인지 확인 
+    - **print()** : test 결과를 출력한다.
