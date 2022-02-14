@@ -48,8 +48,7 @@
     }
     ```
 
-## 사용하기 :computer:
-
+    ## 사용하기 :computer:
 
     ```java
     @AutoConfigureMockMvc
