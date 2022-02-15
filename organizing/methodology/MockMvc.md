@@ -51,13 +51,21 @@
     ## 사용하기 :computer:
 
     ```java
-    @AutoConfigureMockMvc
-    @SpringBootTest // Test임을 명시하는 어노테이션
+
+    @WebMvcTest([test할 클레스 이름!].class)
+    // @SpringTest 와 달리 @WebMvcTest([class이름].class)는 
+    // 특정 클레스만 테스트가 작동하기 때문에 더 빠르다.
     class BaseControllerTest {
 
-        @DisplayName("[view] [GET] 기본 페이지 요청")
+        private final MockMvc mvc;
+
+        public BaseControllerTest(MockMvc mvc) {
+            this.mvc = mvc;
+        }
+
+        @DisplayName("[view] [GET] 기본 페이지 요청") // 테스트의 기본적인 역할을 이름으로써 보여준다.
         @Test                                                       
-        void givenNothing_whenRequestingRootPage_thenReturnsIndexPage(@Autowired MockMvc mvc) throws Exception {
+        void givenNothing_whenRequestingRootPage_thenReturnsIndexPage() throws Exception {
             // Given
 
             // When & Then
@@ -74,9 +82,9 @@
         }   
     ```
 
-- .perform([http method(ex: GET,POST, ...)!]("[URL!]")) http method의 URL에서 test 할낍니다~
-- andExpect([검증할것들!]) : 검증을 수행하게 해준다. 모든 Expect가 통과해야만 테스트를 통과한다.
-- andDo([행동!]) : 검증 후 할 행동
+- **.perform([http method(ex: GET,POST, ...)!]("[URL!]"))** http method의 URL에서 test 할낍니다~
+- **andExpect([검증할것들!])** : 검증을 수행하게 해준다. 모든 Expect가 통과해야만 테스트를 통과한다.
+- **andDo([행동!])** : 검증 후 할 행동
 
     - **status().isOk**  : Http status가 정상인가
     - **content().contentType([content의 타입!])** : content의 타입과 [content의 타입!]이 같은가 
