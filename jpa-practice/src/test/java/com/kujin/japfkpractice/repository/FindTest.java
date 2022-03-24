@@ -20,7 +20,7 @@ class FindTest {
     @Test
     void find() {
 
-//                                                 name 의 역순으로 정렬하는 객체
+//                                              name 의 역순으로 정렬하는 객체  DESC(descending) : 내림차순
          List<User> users1 = userRepository.findAll(Sort.by(Sort.Direction.DESC, "name"));
 
 //        Lists 는 assertj 애서 제공하는 테스트용 클레스다.
