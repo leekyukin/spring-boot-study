@@ -42,6 +42,7 @@ class DeleteTest {
         userRepository.deleteAll();
 
         // 성능상 좋음 : 모든 엔티티가 한번에 삭제된다.
+        // 쿼리문 delete form {table} 로 한번에 삭제
         userRepository.deleteAllInBatch();
 
 
