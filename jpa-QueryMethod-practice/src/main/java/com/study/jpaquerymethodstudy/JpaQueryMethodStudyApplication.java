@@ -1,12 +1,13 @@
-package com.kujin.japfkpractice;
+package com.study.jpaquerymethodstudy;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JapFkPracticeApplication {
+public class JpaQueryMethodStudyApplication {
+
     public static void main(String[] args) {
-        SpringApplication.run(JapFkPracticeApplication.class, args);
+        SpringApplication.run(JpaQueryMethodStudyApplication.class, args);
     }
 
 }

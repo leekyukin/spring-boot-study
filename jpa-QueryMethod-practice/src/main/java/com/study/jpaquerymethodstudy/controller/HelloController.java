@@ -1,4 +1,4 @@
-package com.kujin.japfkpractice.controller;
+package com.study.jpaquerymethodstudy.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
