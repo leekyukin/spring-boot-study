@@ -2,7 +2,10 @@ package com.study.jpaquerymethodstudy.repository;
 
 import com.study.jpaquerymethodstudy.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.http.converter.json.GsonBuilderUtils;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -58,4 +61,39 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     // or
     List<User> findByEmailOrName(String email, String name);
+
+    // 초과 ( > ?)
+    List<User> findByCreatedAtAfter(LocalDateTime yesterday);
+
+    // 초과
+    List<User> findByIdAfter(Long id);
+
+    // 초과 ( > ?) 위의 findByIdAfter 과 쿼리문이 같음
+    List<User> findByIdGreaterThan(Long id);
+
+    // 이상 ( >= ? )
+    List<User> findByIdGreaterThanEqual(Long id);
+
+    // between
+    List<User> findByCreatedAtBetween(LocalDateTime yesterday, LocalDateTime tomorrow);
+
+    // 이상 & 이하 ( <= ? <=) 아래와 같은 뜻, 같은 쿼리문
+    List<User> findByIdBetween(Long n1, Long n2);
+    List<User> findByIdGreaterThanEqualAndIdLessThanEqual(Long n1, Long n2);
+
+    //   값 중 일치하는 것을 반환
+    List<User> findByNameIn(ArrayList<String> newArrayList);
+
+    // like
+    List<User> findByNameStartingWith(String name);
+
+    List<User> findByNameEndingWith(String name);
+
+    List<User> findByNameContains(String name);
+
+    // (파라미터 : %?%) = Contains
+    // (파라미터 : ?%) = StringWith
+    // (파라미터 : %?) = EndingWith
+    // oracle 쿼리문과 같음
+    List<User> findByNameLike(String s);
 }

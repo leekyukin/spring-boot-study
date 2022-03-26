@@ -2,7 +2,7 @@ spring:
   jpa:
     properties:
       hibernate:
-        format_sql: false
+        format_sql: true
     generate-ddl: true
     hibernate:
       ddl-auto: update
@@ -12,4 +12,4 @@ spring:
     username: root
     password: jesusisking
 server:
-  port: 8071
+  port: 9000
