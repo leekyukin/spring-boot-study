@@ -95,5 +95,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
     // (파라미터 : ?%) = StringWith
     // (파라미터 : %?) = EndingWith
     // oracle 쿼리문과 같음
-    List<User> findByNameLike(String s);
+    List<User> findByNameLike(String name);
 }
