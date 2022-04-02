@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EntityListeners( value = MyEntityListeners.class)
+@EntityListeners( value = {MyEntityListeners.class, UserEntityListener.class})
 // EntityListener 로 Listener 클레스를 맵핑 시킴
 public class User implements Auditable{
 
