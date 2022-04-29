@@ -1,5 +1,8 @@
 package com.study.jpaentitylistener.domain;
 
+import com.study.jpaentitylistener.domain.listener.Auditable;
+import com.study.jpaentitylistener.domain.listener.MyEntityListeners;
+import com.study.jpaentitylistener.domain.listener.UserEntityListener;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,7 +18,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @EntityListeners( value = {MyEntityListeners.class, UserEntityListener.class})
 // EntityListener 로 Listener 클레스를 맵핑 시킴
-public class User implements Auditable{
+public class User implements Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

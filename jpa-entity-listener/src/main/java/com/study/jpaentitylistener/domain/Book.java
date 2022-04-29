@@ -1,5 +1,6 @@
 package com.study.jpaentitylistener.domain;
 
+import com.study.jpaentitylistener.domain.listener.Auditable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

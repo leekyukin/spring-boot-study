@@ -1,7 +1,9 @@
-package com.study.jpaentitylistener.domain;
+package com.study.jpaentitylistener.domain.listener;
 
+import com.study.jpaentitylistener.domain.User;
+import com.study.jpaentitylistener.domain.UserHistory;
+import com.study.jpaentitylistener.repository.UserHistoryRepository;
 import com.study.jpaentitylistener.support.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.PrePersist;

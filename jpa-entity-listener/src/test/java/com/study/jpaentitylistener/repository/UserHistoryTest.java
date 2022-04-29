@@ -1,9 +1,7 @@
 package com.study.jpaentitylistener.repository;
 
 import com.study.jpaentitylistener.domain.User;
-import com.study.jpaentitylistener.domain.UserHistoryRepository;
 
-import com.study.jpaentitylistener.support.BeanUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
