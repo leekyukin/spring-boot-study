@@ -12,14 +12,15 @@ class BookRepositoryTest {
     @Autowired
     private BookRepository bookRepository;
 
+
     @Test
     void bookTest() {
         Book book = new Book();
         book.setName("BIBLE");
-        book.setAuthor("GOD");
+        book.setAuthorId(1L);
+        book.setPublisherId(1L);
 
         bookRepository.save(book);
 
-        System.out.println(">>>>>" + bookRepository.findAll());
     }
 }

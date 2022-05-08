@@ -22,7 +22,7 @@ import java.time.LocalDateTime;
 public class UserHistory implements Auditable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Long userId;

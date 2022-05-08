@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @EntityListeners(value = AuditingEntityListener.class)
 // EntityListener 로 Listener 클레스를 맵핑 시킴
 // AuditingEntityListener : @CreatedDate 와 @LastModifiedDate
-// 같은 어노테이션을 제공해 자동으로 생성시간과 수정시간을 저장할 수 있다.션
+// 같은 어노테이션을 제공해 자동으로 생성시간과 수정시간을 저장할 수 있다.
 // 위 클레스로 Auditing 을 사용하려면 main 에서 @EnableJpaAuditing 으로
 // Auditing 을 허용해 주어야 한다.
 @MappedSuperclass
