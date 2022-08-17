@@ -1,11 +1,11 @@
 package com.study.redisTest;
 
 import com.study.redisTest.dto.CreateRequestDto;
+import com.study.redisTest.dto.UpdateRequestDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequiredArgsConstructor
@@ -14,23 +14,37 @@ public class CrudController {
     private final RedisService redisService;
 
     @PostMapping
-    public void create(
+    public void set(
             @RequestBody CreateRequestDto request
     ) {
         redisService.setData(request.getKey(), request.getValue());
     }
 
-    @GetMapping("/{key}")
-    public String readAll(
+    @GetMapping("/get/{key}")
+    public String get(
             @PathVariable String key
     ) {
         return redisService.getData(key);
     }
 
     @PutMapping
-    public void update(
-            @RequestBody CreateRequestDto request
+    public void rename(
+            @RequestBody UpdateRequestDto request
     ) {
-        redisService.updateValue(request.getKey(), request.getValue());
+        redisService.updateValue(request.getKey(), request.getNewKey());
+    }
+
+    @DeleteMapping("/{key}")
+    public void delete(
+            @PathVariable String key
+    ) {
+        redisService.delete(key);
+    }
+
+    @GetMapping("/keys/{pattern}")
+    public Set<String> keys(
+            @PathVariable String pattern
+    ) {
+        return redisService.keys(pattern);
     }
 }

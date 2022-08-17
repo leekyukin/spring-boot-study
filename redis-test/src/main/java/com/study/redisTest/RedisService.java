@@ -7,6 +7,8 @@ import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
+import java.util.List;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -32,5 +34,13 @@ public class RedisService {
 
     public void updateValue(String key, String newValue) {
         redisTemplate.rename(key, newValue);
+    }
+
+    public void delete(String key) {
+        redisTemplate.delete(key);
+    }
+
+    public Set<String> keys(String pattern) {
+        return redisTemplate.keys(pattern);
     }
 }
