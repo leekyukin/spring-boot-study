@@ -2,16 +2,14 @@ package com.study.emailsendertest;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.javamail.*;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.mail.internet.MimeMessage;
 
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class EmailController {
 
     private final JavaMailSender mailSender;
@@ -28,5 +26,12 @@ public class EmailController {
         };
 
         mailSender.send(preparator);
+    }
+
+    @GetMapping("/checkCode")
+    public boolean checkCode(
+            @RequestParam String code
+    ) {
+        return code.equals("1");
     }
 }

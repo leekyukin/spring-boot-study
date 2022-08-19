@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<div>
+  <input id="input" placeholder="코드 입력.." type="number">
+  <button id="btn">전송</button>
+  <p id="display">NO</p>
+</div>
+
+<script>
+  const btn = document.querySelector("#btn");
+  const input = document.querySelector("#input");
+  const display = document.querySelector("#display");
+
+  let value = "";
+
+  input.addEventListener("change", () => {
+      value = input.value;
+      console.log(value);
+  })
+
+  btn.addEventListener("click", () => {
+      display.innerText = value;
+      fetch("http://localhost:8080/api/checkCode?code="+value)
+      .then((res) => {
+          console.log(res);
+      })
+          .then((data) => {
+              console.log(data);
+          })
+      .catch(() => {
+          console.log("FAIL");
+      })
+
+  })
+
+</script>
+
+</body>
+</html>
