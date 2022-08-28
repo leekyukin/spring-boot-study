@@ -1,9 +1,11 @@
 package com.study.querydsltest;
 
+import com.querydsl.core.QueryResults;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.study.querydsltest.domain.FoodStore;
 import com.study.querydsltest.domain.FoodType;
 import com.study.querydsltest.domain.QFoodStore;
+import com.study.querydsltest.domain.QFoodType;
 import com.study.querydsltest.domain.repository.FoodStoreRepository;
 import com.study.querydsltest.domain.repository.FoodTypeRepository;
 import org.junit.jupiter.api.Assertions;
@@ -15,6 +17,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
+import static com.study.querydsltest.domain.QFoodStore.*;
+import static com.study.querydsltest.domain.QFoodType.*;
+
 @SpringBootTest
 public class QueryDSLTest {
 
@@ -25,7 +30,7 @@ public class QueryDSLTest {
     @Autowired
     JPAQueryFactory query;
 
-    @BeforeEach
+    @Test
     public void setData() {
         FoodType korean = new FoodType("한식", 1);
         FoodType western = new FoodType("양식", 2);
@@ -51,12 +56,73 @@ public class QueryDSLTest {
     @Test
     public void 기본쿼리() {
         List<FoodStore> results = query
-                .selectFrom(QFoodStore.foodStore)
+                .selectFrom(foodStore)
                 .fetch();
 
         Assertions.assertEquals(results.size(), 10);
     }
 
     @Test
-    public void 
+    public void 기본쿼리_조건절() {
+        List<FoodStore> results = query
+                .selectFrom(foodStore)
+                .where(
+                        foodStore.rate.goe(5),   // 조건문 연장 (.or()이나 .and()있음) "," 사용시 .and()로 인식
+                        foodStore.storeName.startsWith("삼")
+                )
+                .fetch();
+
+        Assertions.assertEquals(results.size(), 1);
+    }
+
+    @Test
+    public void 기본쿼리_정렬() {
+        List<FoodStore> results = query
+                .selectFrom(foodStore)
+                .orderBy(foodStore.rate.desc())
+                .fetch();
+
+        Assertions.assertEquals(results.size(), 10);
+    }
+
+    @Test
+    public void 기본쿼리_페이징() {
+        QueryResults<FoodStore> fetchResults = query
+                .selectFrom(foodStore)
+                .offset(0)  // 첫번쨰 페이지
+                .limit(3)
+                .fetchResults();
+
+        List<FoodStore> results = fetchResults.getResults();
+        long limit = fetchResults.getLimit();
+        long offset = fetchResults.getOffset();
+        long total = fetchResults.getTotal();
+
+        System.out.println("result: " + results);
+        System.out.println("limit: " + limit);
+        System.out.println("offset: " + offset);
+        System.out.println("total: " + total);
+    }
+
+    @Test
+    public void join() {
+        List<FoodStore> fetch = query
+                .selectFrom(foodStore)
+                .join(foodStore.foodType, foodType)
+                .fetch();
+
+        fetch.forEach(System.out::println);
+    }
+
+    @Test
+    public void 연관관계_없는_조인() {
+        List<FoodStore> results = query
+                .select(foodStore)
+                .from(foodStore, foodType)
+                .where(foodStore.rate.eq(foodType.foodOrder))
+                .fetch();
+
+        Assertions.assertEquals(results.size(), 2);
+    }
+
 }
