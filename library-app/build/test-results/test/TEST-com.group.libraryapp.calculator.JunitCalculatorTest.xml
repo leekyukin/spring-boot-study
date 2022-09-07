@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.group.libraryapp.calculator.JunitCalculatorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-09-07T09:41:27" hostname="igyujin-ui-MacBookPro.local" time="0.037">
-  <properties/>
-  <testcase name="divideExceptionError()" classname="com.group.libraryapp.calculator.JunitCalculatorTest" time="0.037"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
