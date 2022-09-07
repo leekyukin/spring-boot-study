@@ -1,5 +1,6 @@
-package com.group.libraryapp.calculator
+package com.group.librayapp.calculator
 
+import com.group.libraryapp.calculator.Calculator
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.nio.channels.IllegalChannelGroupException
