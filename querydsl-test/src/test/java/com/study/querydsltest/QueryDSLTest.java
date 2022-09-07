@@ -1,17 +1,14 @@
 package com.study.querydsltest;
 
 import com.querydsl.core.QueryResults;
+import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.study.querydsltest.domain.FoodStore;
 import com.study.querydsltest.domain.FoodType;
-import com.study.querydsltest.domain.QFoodStore;
-import com.study.querydsltest.domain.QFoodType;
 import com.study.querydsltest.domain.repository.FoodStoreRepository;
 import com.study.querydsltest.domain.repository.FoodTypeRepository;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -125,4 +122,12 @@ public class QueryDSLTest {
         Assertions.assertEquals(results.size(), 2);
     }
 
+    @Test
+    public void join1() {
+        List<Tuple> result = query
+                .select(foodStore, foodType)
+                .from(foodStore)
+                .join(foodType).on(foodStore.rate.eq(foodType.foodOrder))
+                .fetch();
+    }
 }
