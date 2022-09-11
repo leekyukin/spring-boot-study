@@ -18,4 +18,8 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     @Override
     @EntityGraph(attributePaths = "team")
     List<Member> findAll();
+
+    @EntityGraph(attributePaths = "team")
+    @Query("select m from Member m")
+    List<Member> findAllByQueryByEntityGraph();
 }
