@@ -1,5 +1,6 @@
 package com.group.libraryapp.service.book;
 
+import com.group.libraryapp.domain.book.Book;
 import com.group.libraryapp.domain.book.JavaBook;
 import com.group.libraryapp.domain.book.BookRepository;
 import com.group.libraryapp.domain.user.User;
@@ -30,13 +31,13 @@ public class BookService {
 
   @Transactional
   public void saveBook(BookRequest request) {
-    JavaBook newBook = new JavaBook(request.getName());
+    Book newBook = new Book(request.getName(), null);
     bookRepository.save(newBook);
   }
 
   @Transactional
   public void loanBook(BookLoanRequest request) {
-    JavaBook book = bookRepository.findByName(request.getBookName()).orElseThrow(IllegalArgumentException::new);
+    Book book = bookRepository.findByName(request.getBookName()).orElseThrow(IllegalArgumentException::new);
     if (userLoanHistoryRepository.findByBookNameAndIsReturn(request.getBookName(), false) != null) {
       throw new IllegalArgumentException("진작 대출되어 있는 책입니다");
     }

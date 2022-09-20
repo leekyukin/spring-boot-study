@@ -12,5 +12,9 @@ public class UserUpdateRequest {
   public String getName() {
     return name;
   }
+  public UserUpdateRequest(long id, String name) {
+    this.id = id;
+    this.name = name;
+  }
 
 }

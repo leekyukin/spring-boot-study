@@ -1,14 +1,9 @@
 package com.group.libraryapp.dto.user.request;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 public class UserCreateRequest {
 
-  @NotNull
   private String name;
 
-  @Nullable
   private Integer age;
 
   public UserCreateRequest(String name, Integer age) {
