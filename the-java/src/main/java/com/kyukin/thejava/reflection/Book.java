@@ -1,4 +1,4 @@
-package com.kyukin.thejava.ch1;
+package com.kyukin.thejava.reflection;
 
 public class Book {
 

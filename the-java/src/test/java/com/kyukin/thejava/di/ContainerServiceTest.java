@@ -1,4 +1,4 @@
-package com.kyukin.thejava.ch2;
+package com.kyukin.thejava.di;
 
 import org.junit.jupiter.api.Test;
 
@@ -6,15 +6,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ContainerServiceTest {
 
-     @Test
+    @Test
     public void getObject_BookRepository() throws Exception {
-        BookRepository bookRepository = ContainerService.getObject(BookRepository.class);
+        com.kyukin.thejava.di.BookRepository bookRepository = com.kyukin.thejava.di.ContainerService.getObject(com.kyukin.thejava.di.BookRepository.class);
         assertNotNull(bookRepository);
     }
 
     @Test
     public void getObject_BookService() {
-         BookSerivce bookSerivce = ContainerService.getObject(BookSerivce.class);
+         com.kyukin.thejava.di.BookSerivce bookSerivce = com.kyukin.thejava.di.ContainerService.getObject(com.kyukin.thejava.di.BookSerivce.class);
          assertNotNull(bookSerivce);
          assertNotNull(bookSerivce.bookRepository);
     }

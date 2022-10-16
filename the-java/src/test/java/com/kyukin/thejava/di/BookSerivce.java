@@ -1,4 +1,4 @@
-package com.kyukin.thejava.ch2;
+package com.kyukin.thejava.di;
 
 public class BookSerivce {
 

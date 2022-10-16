@@ -1,4 +1,4 @@
-package com.kyukin.thejava.ch2;
+package com.kyukin.thejava.di;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
@@ -8,7 +8,7 @@ public class ContainerService  {
     public static <T> T getObject(Class<T> classType) {
         T instance = createInstance(classType);
         Arrays.stream(classType.getDeclaredFields()).forEach(f ->{
-           if (f.getAnnotation(Inject.class) != null) {
+           if (f.getAnnotation(com.kyukin.thejava.di.Inject.class) != null) {
                Object filedInstance = createInstance(f.getType());
                f.setAccessible(true);
                try {

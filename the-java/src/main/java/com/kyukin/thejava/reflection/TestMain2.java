@@ -1,4 +1,4 @@
-package com.kyukin.thejava.ch1;
+package com.kyukin.thejava.reflection;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 public class TestMain2 {
     public static void main(String[] args) throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchFieldException, NoSuchMethodException {
         // 필드 값 변경
-        Class<?> bookClass = Class.forName("com.kyukin.thejava.ch1.Book");
+        Class<?> bookClass = Class.forName("com.kyukin.thejava.reflection.Book");
         Constructor<?> constructor  = bookClass.getConstructor(String.class);
         Book book = (Book) constructor.newInstance("myBook");
         System.out.println(book);

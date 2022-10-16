@@ -1,4 +1,4 @@
-package com.kyukin.thejava.ch1;
+package com.kyukin.thejava.reflection;
 
 import java.util.Arrays;
 
@@ -16,7 +16,7 @@ public class TestMain1 {
         Class<? extends Book> aClass = book.getClass();
 
         // FQCN는 Class.forName()으로
-        Class<?> aClass1 = Class.forName("com.kyukin.thejava.ch1.Book");
+        Class<?> aClass1 = Class.forName("com.kyukin.thejava.reflection.Book");
 
 
         // 접근후 참조방법

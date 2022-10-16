@@ -1,4 +1,4 @@
-package com.kyukin.thejava.ch2;
+package com.kyukin.thejava.di;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
