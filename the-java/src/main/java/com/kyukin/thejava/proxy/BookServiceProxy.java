@@ -12,8 +12,8 @@ public class BookServiceProxy implements BookService {
 
     @Override
     public void rent(Book book) {
-        System.out.println("프록시에서");
+        System.out.println("프록시에서 추가하고 싶은 추가 로깅입니다.");
         bookService.rent(book);
-        System.out.println("이런식으로 기능 변경도 가능함");
+        System.out.println("프록시에서 추가하고 싶은 추가 로깅입니다.");
     }
 }
