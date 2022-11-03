@@ -1,5 +1,8 @@
-package com.example.order.domain.partner;
+package com.example.order.domain.partner.service;
 
+import com.example.order.domain.partner.*;
+import com.example.order.domain.partner.designing.PartnerReader;
+import com.example.order.domain.partner.designing.PartnerStore;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

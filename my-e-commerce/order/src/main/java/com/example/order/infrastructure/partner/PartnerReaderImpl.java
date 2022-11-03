@@ -1,7 +1,7 @@
 package com.example.order.infrastructure.partner;
 
 import com.example.order.domain.partner.Partner;
-import com.example.order.domain.partner.PartnerReader;
+import com.example.order.domain.partner.designing.PartnerReader;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

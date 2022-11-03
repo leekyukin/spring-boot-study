@@ -1,4 +1,7 @@
-package com.example.order.domain.partner;
+package com.example.order.domain.partner.service;
+
+import com.example.order.domain.partner.PartnerCommand;
+import com.example.order.domain.partner.PartnerInfo;
 
 public interface PartnerService {
     // Command : 명령

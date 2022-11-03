@@ -3,7 +3,7 @@ package com.example.order.application.partner;
 import com.example.order.domain.notification.NotificationService;
 import com.example.order.domain.partner.PartnerCommand;
 import com.example.order.domain.partner.PartnerInfo;
-import com.example.order.domain.partner.PartnerService;
+import com.example.order.domain.partner.service.PartnerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

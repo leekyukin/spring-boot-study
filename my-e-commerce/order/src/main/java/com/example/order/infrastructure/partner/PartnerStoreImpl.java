@@ -1,7 +1,7 @@
 package com.example.order.infrastructure.partner;
 
 import com.example.order.domain.partner.Partner;
-import com.example.order.domain.partner.PartnerStore;
+import com.example.order.domain.partner.designing.PartnerStore;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
