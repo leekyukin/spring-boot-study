@@ -1,7 +1,6 @@
 package com.example.order.interfaces.partner;
 
 import com.example.order.domain.partner.Partner;
-import com.example.order.domain.partner.PartnerCommand;
 import com.example.order.domain.partner.PartnerInfo;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,14 +24,6 @@ public class PartnerDto {
         @Email(message = "email 형식에 맞아야 합니다")
         @NotEmpty(message = "email 은 필수값입니다")
         private String email;
-
-        public PartnerCommand toCommand() {
-            return PartnerCommand.builder()
-                .partnerName(partnerName)
-                .businessNo(businessNo)
-                .email(email)
-                .build();
-        }
     }
 
     @Getter

@@ -33,7 +33,7 @@ public class ItemOptionSeriesFactoryImpl implements ItemOptionSeriesFactory {
                 var initItemOptionGroup = requestItemOptionGroup.toEntity(item);
                 var itemOptionGroup = itemOptionGroupStore.store(initItemOptionGroup);
 
-                requestItemOptionGroup.getRegisterItemOptionRequestList().forEach(requestItemOption -> {
+                requestItemOptionGroup.getItemOptionRequestList().forEach(requestItemOption -> {
                     var initItemOption = requestItemOption.toEntity(itemOptionGroup);
                     itemOptionStore.store(initItemOption);
                 });

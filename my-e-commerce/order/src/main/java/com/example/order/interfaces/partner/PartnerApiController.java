@@ -14,10 +14,11 @@ import javax.validation.Valid;
 @RestController
 public class PartnerApiController {
     private final PartnerFacade partnerFacade;
+    private final PartnerDtoMapper partnerDtoMapper;
 
     @PostMapping
     public CommonResponse registerPartner(@RequestBody @Valid PartnerDto.RegisterRequest request) {
-        var command = request.toCommand();
+        var command = partnerDtoMapper.of(request);
         var partnerInfo = partnerFacade.registerPartner(command);
         var response = new PartnerDto.RegisterResponse(partnerInfo);
         return CommonResponse.success(response);
